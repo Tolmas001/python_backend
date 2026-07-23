@@ -1,5 +1,9 @@
 from fastapi import APIRouter
 
+from app.services.metrics_service import (
+    get_metrics
+)
+
 router = APIRouter(
     prefix="/api",
     tags=["Metrics"]
@@ -9,6 +13,4 @@ router = APIRouter(
 @router.get("/metrics")
 async def metrics():
 
-    return {
-        "total_requests": 0
-    }
+    return get_metrics()
